@@ -76,7 +76,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="des-cov-1">
                         <div class="des-img-1">
-                            <a href="{{route('tour-detail')}}"><img src="{{url('public')}}/images/tours/d-1.png" alt="img"></a>
+                            <a href="{{route('tour-detail')}}"><img src="{{url('public/images/destinations/tours')}}/{{$tr->image}}" alt="img"></a>
                         </div>
                         <div class="des-para">
                             <div class="dayt">
