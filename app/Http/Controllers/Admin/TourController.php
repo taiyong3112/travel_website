@@ -47,14 +47,13 @@ class TourController extends Controller
      */
     public function store(TourRequest $request)
     {
-        $file = $request->file('upload');
-        $file_name = $file->getClientOriginalName();
-        $file->move(public_path('images/destinations/tours'),$file_name);
-        $request->merge(['image'=>$file_name]);
+        $img = str_replace(url('public/images/uploads').'/', '', $request->image);
+        $request->merge(['image' => $img]);
         // dd($request->all());
         
         $tour = new Tour();
         $tour->name = $request->name;
+        $tour->slug = $request->slug;
         $tour->destination_id = $request->destination_id;
         $tour->summary = $request->summary;
         $tour->content = $request->content;
@@ -106,10 +105,8 @@ class TourController extends Controller
      */
     public function update(TourRequest $request, Tour $tour)
     {
-        $file = $request->file('upload');
-        $file_name = $file->getClientOriginalName();
-        $file->move(public_path('images/destinations/tours'),$file_name);
-        $request->merge(['image'=>$file_name]);
+        $img = str_replace(url('public/images/uploads').'/', '', $request->image);
+        $request->merge(['image' => $img]);
         // dd($request->all());
         
         // $tour = new Tour();

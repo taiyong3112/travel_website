@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Destination;
 use App\Models\Tour;
+use App\Models\Package;
 
 class HomeController extends Controller
 {
@@ -35,10 +36,17 @@ class HomeController extends Controller
         return view('index');
     }
 
-    public function destination($id)
+    public function destination($slug)
     {
-        $destination = Destination::find($id);
-        $tours = Tour::where('destination_id',$id)->where('status',1)->orderBy('id', 'ASC')->get();
-        return view('pages.tourlist',compact('id','tours'));
+        $des = Destination::where('slug',$slug)->first();
+        $tour = Tour::where('slug',$slug)->first();
+        if ($des) {
+            return view('pages.tourlist',compact('des'));
+        }
+        else if ($tour)
+        {
+                
+            return view('pages.tourdetail',compact('tour'));
+        }
     }
 }

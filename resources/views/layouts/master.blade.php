@@ -34,6 +34,15 @@
   <link href="{{url('public')}}/assets/css/now-ui-dashboard.css" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{url('public')}}/assets/demo/demo.css" rel="stylesheet" />
+  <script type="text/javascript">
+    var base_url = function(){
+      return "{{url('')}}";
+    }
+
+    var akey = function(){
+      return 'wendwebsite';
+    }
+  </script>
 </head>
 
 <body class="">
@@ -79,6 +88,12 @@
             <a href="{{route('admin.role-register')}}">
               <i class="now-ui-icons users_single-02"></i>
               <p>User Profile</p>
+            </a>
+          </li>
+          <li class="{{'admin/file-manager' == request()->path() ? 'active' : ''}}">
+            <a href="{{route('admin.file')}}">
+              <i class="now-ui-icons users_single-02"></i>
+              <p>File Manager</p>
             </a>
           </li>
         </ul>

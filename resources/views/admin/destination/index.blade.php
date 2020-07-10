@@ -52,7 +52,7 @@ Destination | Wend Travel
                                 <td>{{$dest->id}}</td>
                                 <td>{{$dest->name}}</td>
                                 <td>
-                                    <img src="{{url('public/images/destinations')}}/{{$dest->image}}" alt="" style="width: 70px">
+                                    <img src="{{url('public/images/uploads')}}/{{$dest->image}}" alt="" style="width: 70px">
                                 </td>
                                 <td>{{$dest->status}}</td>
                                 <td>{{$dest->meta_keywords}}</td>
@@ -73,9 +73,9 @@ Destination | Wend Travel
                     </table>
                 </div>
             </div>
-            {{$destination->links()}}
         </div>
     </div>
+    
 </div>
 
 @endsection

@@ -6,7 +6,6 @@ Edit Destination | Wend Travel
 
 
 @section('content')
-
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -14,12 +13,12 @@ Edit Destination | Wend Travel
                 <h4 class="card-title">Edit Destination</h4>
             </div>
             <div class="card-body col-md-6">
-                <form action="{{route('destination.update',$destination->id)}}" method="POST" role="form" class="form" enctype="multipart/form-data">
+                <form action="{{route('destination.update',$dest->id)}}" method="POST" role="form" class="form" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" name="name" value="{{$destination->name}}">
+                        <input type="text" class="form-control" name="name" id="name" value="{{$dest->name}}">
                     </div>
                     @error('name')
                         <small class="help-block text-danger">
@@ -27,17 +26,21 @@ Edit Destination | Wend Travel
                         </small>
                     @enderror
                     <div class="form-group">
+                        <label>Destination Slug</label>
+                        <input type="text" class="form-control" name="slug" id="slug" value="{{$dest->slug}}">
+                    </div>
+                    <div class="form-group">
                         <label>Image</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFile" name="upload">
-                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="image" id="image">
+                            <div class="input-group-btn" style="padding:0">
+                                <a href="#modal-file" data-toggle="modal" class="btn btn-default" style="margin:0">Select</a>
+                            </div>
+                            <div class="show_img" style="float: left">
+                                <img src="" alt="" id="show_img" style="width: 100%">
+                            </div>
                         </div>
                     </div>
-                    @error('upload')
-                        <small class="help-block text-danger">
-                            {{$message}}
-                        </small>
-                    @enderror
                     <div class="form-group">
                         <label>Status</label>
                         <div class="custom-control custom-radio">
@@ -65,15 +68,34 @@ Edit Destination | Wend Travel
         </div>
     </div>
 </div>
-
+<div class="modal fade" id="modal-file">
+    <div class="modal-dialog" style="max-width: 85%; width: 85%" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Quản lý File</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <iframe src="{{url('file')}}/dialog.php?akey=wendwebsite&field_id=image" style="width: 100%; height: 500px; border: 0; overflow-y: auto"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 
 @section('scripts')
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         $(".custom-file-input").on("change", function() {
             var fileName = $(this).val().split("\\").pop();
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
         });
-    </script>    
+    </script> --> 
+    <script src="{{url('public/js')}}/slug.js"></script>    
+    <script type="text/javascript">
+        $('#modal-file').on('hide.bs.modal', function(){
+            var _img = $('input#image').val();
+            $('img#show_img').attr('src',_img);
+        })
+    </script>   
 @endsection

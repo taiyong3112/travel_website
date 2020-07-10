@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('css')
+<link rel="stylesheet" href="{{url('public/css')}}/jsRapStar.css">
+@endsection
+
 @section('main')
 
 <!-- tour-banner start-->
@@ -33,8 +37,7 @@
                 <div class="all-details-tour">
                     <div class="all-price">
                         <div class="tour-heading-detailse">
-                            <h6>London</h6>
-                            <h2>Special <span>London Tour</span></h2>
+                            <h2>{{$tour->name}}</h2>
                             <div class="start-text-details">
                                 <div class="start-icon-deta">
                                     <a href="#"><i class="fas fa-star"></i></a>
@@ -48,34 +51,20 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="price-tour">
-                            <h2><span>$</span>150</h2>
-                        </div>
                     </div>
-                    <div class="tour-main-informa">
+                    <!-- <div class="tour-main-informa">
                         <h6>5 Day <span>|</span></h6>
                         <h6>18+ <span>|</span></h6>
                         <h6>20 People <span>|</span></h6>
                         <h6>Adventure <span>|</span></h6>
                         <h6>25 September</h6>
-                    </div>
+                    </div> -->
                     <div class="det-asor-img">
-                        <img src="{{url('public')}}/images/tours/d-1.png" alt="img">
+                        <img src="{{url('public/images/uploads')}}/{{$tour->image}}" alt="img">
                     </div>
                     <div class="rweal-reat">
-                        <h5>Tour Overview</h5>
-                        <p>Aliquam erat volutpat. Curabitur tempor nibh quis arcu convallis, sed viverra quam
-                            sollicitudin. Proin sed augue sed neque ultricies condimentum. In ac ultrices lectu</p>
-                        <p>Ut accumsan lorem scelerisque mauris congue posuere. Aliquam elementum fermentum
-                            accumsan. Mauris id blandit eros. Nullam in convallis dui. Nunc sit amet justo porta,
-                            euismod nisi at, vehicula ligula. Pellentesque ante orci, fringilla sed nulla a, ornare
-                            consequat purus. Mauris vehicula malesuada lorem, vel facilisis nunc aliquet vitae.
-                            Pellentesque vestibulum, elit vitae tempor iaculis, sem purus consectetur erat, at
-                            cursus erat purus at elit. Phasellus ex dui, elementum nec elit ac, euismod placerat
-                            urna. Etiam vel elementum dui. In pellentesque sem in ex consequat cursus. Quisque
-                            placerat posuere convallis. Etiam ultricies arcu vel velit aliquam iaculis. Donec
-                            vulputate ornare diam vel malesuada. Nam a tincidunt neque. Donec scelerisque orci
-                            risus, quis tempor nunc egestas ullamcorper. </p>
+                        <h5>Giới thiệu về Tour</h5>
+                        <p>{{$tour->content}}</p>
                     </div>
                     <div class="packages-includ">
                         <h5>Package Included / Excluded</h5>
@@ -117,7 +106,7 @@
                     <div class="map-inclid">
                         <h5>Tour Location</h5>
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3677.6962663570607!2d89.56355961427838!3d22.813715829827952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ff901efac79b59%3A0x5be01a1bc0dc7eba!2sAnd+IT!5e0!3m2!1sen!2sbd!4v1557901943656!5m2!1sen!2sbd"
+                            src="{{$tour->location}}"
                             width="600" height="450" allowfullscreen=""></iframe>
                     </div>
                     <div class="client-revews">
@@ -153,71 +142,9 @@
                             <div class="col-lg-6">
                                 <div class="dtart-one">
                                     <div class="start-one-ras">
-                                        <h6>Services</h6>
-                                        <div class="stat-serv">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
+                                        <h6>Rate Us</h6>
+                                        <div id="star-rating" start="0"></div>
                                     </div>
-                                    <div class="start-one-ras">
-                                        <h6>Hospitality</h6>
-                                        <div class="stat-serv">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="start-one-ras">
-                                        <h6>Cleanliness</h6>
-                                        <div class="stat-serv">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="dtart-one">
-                                    <div class="start-one-ras">
-                                        <h6>Rooms</h6>
-                                        <div class="stat-serv">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="start-one-ras">
-                                        <h6>Comfort</h6>
-                                        <div class="stat-serv">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="start-one-ras">
-                                        <h6>Satisfaction</h6>
-                                        <div class="stat-serv">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
@@ -307,5 +234,17 @@
     </div>
 </section>
 <!-- tour-details end-->
+@endsection
 
+@section('js')
+<script type="text/javascript" src="{{url('public/js')}}/jsRapStar.js"></script>
+<script type="text/javascript">
+    $('#star-rating').jsRapStar({
+        length: 5,
+        star:'★',
+        colorBack: '#014073',
+        colorFront: 'white',
+        starHeight: 20
+    });
+</script>
 @stop

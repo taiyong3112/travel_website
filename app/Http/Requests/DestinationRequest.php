@@ -25,15 +25,14 @@ class DestinationRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'upload' => 'required|mimes:jpeg,png,gif',
+            
         ];
     }
     public function messages()
     {
         return [
             'name.required' => 'Destination name cannot be blanked',
-            'upload.required' => 'Image cannot be blanked',
-            'upload.mimes' => 'File is not valid, only accept .jpeg, .png, .gif files'
+            
         ];
     }
 }

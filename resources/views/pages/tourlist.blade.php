@@ -72,24 +72,23 @@
         </div>
         <div class="container">
             <div class="row">
-                @foreach($tours as $tr)
+                @foreach($des->tours as $tr)
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="des-cov-1">
                         <div class="des-img-1">
-                            <a href="{{route('tour-detail')}}"><img src="{{url('public/images/destinations/tours')}}/{{$tr->image}}" alt="img"></a>
+                            <a href="{{route('home.destination',['slug'=>$tr->slug])}}"><img src="{{url('public/images/uploads')}}/{{$tr->image}}" alt="img"></a>
                         </div>
                         <div class="des-para">
                             <div class="dayt">
-                                <h6><a href="tour-details.html">{{$tr->name}}</a></h6>
-                                <p><a href="{{route('tour-detail')}}">{{$tr->duration}} Ngày</a></p>
+                                <h6><a href="{{route('home.destination',['slug'=>$tr->slug])}}">{{$tr->name}}</a></h6>
+                                <p>{{$tr->duration}} Ngày</p>
                             </div>
                             <div class="real-dat-para">
                                 <p>{{$tr->summary}}</p>
                             </div>
                             <div class="des-button-icon">
                                 <div class="das-into-btn">
-                                    <a href="#!" class="btn btn-3" data-toggle="modal" data-target="#myModal">Book
-                                        Now</a>
+                                    <a href="{{route('home.destination',['slug'=>$tr->slug])}}" class="btn btn-3">View More</a>
                                 </div>
                                 <div class="start-icon-des">
                                     <i class="fas fa-star"></i>
@@ -103,65 +102,6 @@
                     </div>
                 </div>
                 @endforeach
-                <!--Model box-->
-
-                <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <div class="model-details">
-                                    <h5>Travel Booking Form</h5>
-                                    <div class="mdel-form">
-                                        <form action="#">
-                                            <div class="form-group">
-                                                <label for="name">First name</label>
-                                                <input type="text" class="form-control" placeholder="First Name"
-                                                    id="name">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="last-name">Last Name</label>
-                                                <input type="text" class="form-control" placeholder="Last Name"
-                                                    id="last-name">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="duse">Departure Date</label>
-                                                <input type="text" name="date" class="form-control" id="duse">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="deate-area-2">Return Date</label>
-                                                <input type="text" name="date" class="form-control xDateContainer"
-                                                    id="deate-area-2">
-                                            </div>
-                                            <div class="form-group mainm-sel">
-                                                <label for="text" id="form-control">Guest:</label>
-                                                <div class="select-box">
-                                                    <span class="sec-po"></span>
-                                                    <select id="text">
-                                                        <option value="0">Number of Guest</option>
-                                                        <option value="1">2</option>
-                                                        <option value="2">3</option>
-                                                        <option value="3">4</option>
-                                                    </select>
-                                                    <div class="serv-ivmf-2">
-                                                        <i class="fas fa-angle-down"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        
-
-                                            <div class="sunb-btn-mod">
-                                                <a href="#!" class="btn btn-3 widet-2">BOOKING NOW</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
             </div>
         </div>
     </section>

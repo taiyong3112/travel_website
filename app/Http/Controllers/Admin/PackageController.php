@@ -17,7 +17,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-        $package = Package::paginate(5);
+        $package = Package::orderBy('id','DESC')->paginate(5);
         if(request('key')){
             $key = request('key');
             $package = DB::table('packages')->where('name', 'LIKE', '%'.$key.'%')->paginate(5);

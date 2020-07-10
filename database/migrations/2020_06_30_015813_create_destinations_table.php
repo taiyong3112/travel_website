@@ -16,6 +16,7 @@ class CreateDestinationsTable extends Migration
         Schema::create('destinations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100)->unique();
+            $table->string('slug')->unique();
             $table->string('image', 255)->nullable();
             $table->tinyInteger('status')->default(0);
             $table->string('meta_keywords', 100)->nullable();

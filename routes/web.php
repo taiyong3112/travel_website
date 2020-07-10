@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', 'HomeController@homepage')->name('index');
 
 Route::group(['prefix'=>'pages'], function(){
-	Route::get('/{id}-{slug}', 'HomeController@destination')->name('home.destination');
+	Route::get('/{slug}', 'HomeController@destination')->name('home.destination');
 	Route::get('tourlist-detail',function(){
 		return view('pages.tourdetail');
 	})->name('tour-detail');
@@ -53,11 +53,15 @@ Route::group(['middleware' => ['auth','admin'], 'prefix'=> 'admin'], function(){
 	Route::get('/',function(){
 		return view('admin.dashboard');
 	})->name('admin.dashboard');
+
 	Route::get('/role-register', 'Admin\DashboardController@registered')->name('admin.role-register');
 	Route::get('/role-edit/{id}', 'Admin\DashboardController@edit')->name('admin.edit');
 	Route::put('/role-update/{id}', 'Admin\DashboardController@update')->name('admin.update');
 	Route::delete('/role-delete/{id}', 'Admin\DashboardController@delete')->name('admin.delete');
 
+	Route::get('file-manager',function(){
+		return view('admin.file');
+	})->name('admin.file');
 	Route::resource('destination','Admin\DestinationController');
 	Route::resource('package','Admin\PackageController');
 	Route::resource('tour','Admin\TourController');

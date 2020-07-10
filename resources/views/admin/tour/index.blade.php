@@ -54,12 +54,12 @@ Tour | Wend Travel
                                 <td>{{$tr->id}}</td>
                                 <td>{{$tr->name}}</td>
                                 <td>
-                                    <img src="{{url('public/images/destinations/tours')}}/{{$tr->image}}" alt="" style="width: 70px">
+                                    <img src="{{url('public/images/uploads')}}/{{$tr->image}}" alt="" style="width: 70px">
                                 </td>
                                 <td>{{$tr->summary}}</td>
                                 <td>{{$tr->content}}</td>
-                                <td>{{$tr->adult_price}}</td>
-                                <td>{{$tr->children_price}}</td>
+                                <td>{{number_format($tr->adult_price)}} VNĐ</td>
+                                <td>{{number_format($tr->children_price)}} VNĐ</td>
                                 <td>{{$tr->duration}}</td>
                                 <td>
                                     <a href="{{route('tour.edit',$tr->id)}}" class="btn btn-success btn-sm">EDIT</a>

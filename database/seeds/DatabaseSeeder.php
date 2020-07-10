@@ -11,59 +11,59 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call('DestinationSeeder');
+        // $this->call('DestinationSeeder');
         $this->call('PackageSeeder');
     }
 }
 
-class DestinationSeeder extends Seeder
-{
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        DB::table('destinations')->insert([
-        	[
-        		'name'=>'Phú Quốc',
-        		'status' => 1
+// class DestinationSeeder extends Seeder
+// {
+//     /**
+//      * Seed the application's database.
+//      *
+//      * @return void
+//      */
+//     public function run()
+//     {
+//         DB::table('destinations')->insert([
+//         	[
+//         		'name'=>'Phú Quốc',
+//         		'status' => 1
 
-        	],
-        	[
-        		'name'=>'Hạ Long',
-        		'status' => 1
+//         	],
+//         	[
+//         		'name'=>'Hạ Long',
+//         		'status' => 1
 
-        	],
-        	[
-        		'name'=>'Sapa',
-        		'status' => 1
+//         	],
+//         	[
+//         		'name'=>'Sapa',
+//         		'status' => 1
 
-        	],
-        	[
-        		'name'=>'Hà Nội',
-        		'status' => 1
+//         	],
+//         	[
+//         		'name'=>'Hà Nội',
+//         		'status' => 1
 
-        	],
-        	[
-        		'name'=>'Thành Phố Hồ Chí Minh',
-        		'status' => 1
+//         	],
+//         	[
+//         		'name'=>'Thành Phố Hồ Chí Minh',
+//         		'status' => 1
 
-        	],
-        	[
-        		'name'=>'Quy Nhơn',
-        		'status' => 1
+//         	],
+//         	[
+//         		'name'=>'Quy Nhơn',
+//         		'status' => 1
 
-        	],
-        	[
-        		'name'=>'Đà Nẵng',
-        		'status' => 1
+//         	],
+//         	[
+//         		'name'=>'Đà Nẵng',
+//         		'status' => 1
 
-        	],
-        ]);
-    }
-}
+//         	],
+//         ]);
+//     }
+// }
 
 class PackageSeeder extends Seeder
 {

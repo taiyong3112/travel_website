@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="{{url('public')}}/css/owl.carousel.min.css">
 		<link rel="stylesheet" href="{{url('public')}}/css/owl.theme.default.min.css">
 		<link rel="stylesheet" href="{{url('public')}}/css/style.css">
+		@yield('css')
 	</head>
 	<body>
 		<header class="header">
@@ -60,7 +61,7 @@
 									<ul class="dropdown-menu">
 										<li>
 											@foreach($destination as $dest)
-											<a href="{{route('home.destination',['id'=>$dest->id,'slug'=> Str::slug($dest->name)])}}">{{$dest->name}}</a>
+											<a href="{{route('home.destination',['slug'=>$dest->slug])}}">{{$dest->name}}</a>
 											@endforeach
 										</li>
 									</ul>
@@ -223,5 +224,6 @@
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 		<script type="text/javascript" src="{{url('public')}}/js/owl.carousel.min.js"></script>
  		<script type="text/javascript" src="{{url('public')}}/js/app.js"></script>
+ 		@yield('js')
 	</body>
 </html>

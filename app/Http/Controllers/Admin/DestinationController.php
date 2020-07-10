@@ -17,10 +17,10 @@ class DestinationController extends Controller
      */
     public function index()
     {
-        $destination = Destination::paginate(5);
+        $destination = Destination::orderBy('id','ASC')->get();
         if(request('key')){
             $key = request('key');
-            $destination = DB::table('destinations')->where('name', 'LIKE', '%'.$key.'%')->paginate(5);
+            $destination = DB::table('destinations')->where('name', 'LIKE', '%'.$key.'%');
         }
         return view('admin.destination.index',compact('destination'));
     }
@@ -43,11 +43,10 @@ class DestinationController extends Controller
      */
     public function store(DestinationRequest $request)
     {
-        $file = $request->file('upload');
-        $file_name = $file->getClientOriginalName();
-        $file->move(public_path('images/destinations'),$file_name);
-        $request->merge(['image'=>$file_name]);
-
+        $img = str_replace(url('public/images/uploads').'/', '', $request->image);
+        $request->merge(['image' => $img]);
+        
+        // dd($request->all());
         Destination::create($request->all());
         return redirect()->route('destination.index')->with('status-success','The Destination had been added');
     }
@@ -69,9 +68,11 @@ class DestinationController extends Controller
      * @param  \App\Models\Destination  $destination
      * @return \Illuminate\Http\Response
      */
-    public function edit(Destination $destination)
+    public function edit($id)
     {
-        return view('admin.destination.edit',compact('destination'));
+        $dest = Destination::find($id);
+   
+        return view('admin.destination.edit',compact('dest'));
     }
 
     /**
@@ -83,10 +84,8 @@ class DestinationController extends Controller
      */
     public function update(Request $request, Destination $destination)
     {
-        $file = $request->file('upload');
-        $file_name = $file->getClientOriginalName();
-        $file->move(public_path('images/destinations'),$file_name);
-        $request->merge(['image'=>$file_name]);
+        $img = str_replace(url('public/images/uploads').'/', '', $request->image);
+        $request->merge(['image' => $img]);
 
         $destination->update($request->all());
         return redirect()->route('destination.index')->with('status-success','The Destination had been updated');
