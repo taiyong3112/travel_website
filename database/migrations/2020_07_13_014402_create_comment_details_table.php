@@ -14,8 +14,8 @@ class CreateCommentDetailsTable extends Migration
     public function up()
     {
         Schema::create('comment_details', function (Blueprint $table) {
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedInteger('customer_id');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->unsignedInteger('blog_id');
             $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
         });

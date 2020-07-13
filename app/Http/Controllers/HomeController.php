@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Destination;
 use App\Models\Tour;
+use App\Models\Rating;
 use App\Models\Package;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -19,6 +21,14 @@ class HomeController extends Controller
         // $this->middleware('auth');
     }
 
+    public function logout(){
+        Auth::guard('cus')->logout();
+        return redirect()->route('index');
+    }
+
+    public function login(){
+        return view('pages.account'); 
+    }
     /**
      * Show the application dashboard.
      *
@@ -26,13 +36,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-         return view('home');
-        $top_tour = Tour::limit(6)->orderBy('id','DESC')->get();   
-        return view('home',compact('top_tour'));
+        return view('home');
     }
 
     public function homepage()
     {
+        Auth::guard('cus')->attempt(['email'=> 'tson@gmail.com','password'=> '123456789']); 
         return view('index');
     }
 
@@ -45,8 +54,8 @@ class HomeController extends Controller
         }
         else if ($tour)
         {
-                
-            return view('pages.tourdetail',compact('tour'));
+            $rating = Rating::all();    
+            return view('pages.tourdetail',compact('tour','rating'));
         }
     }
 }

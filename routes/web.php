@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', 'HomeController@homepage')->name('index');
+Route::get('home-logout', 'HomeController@logout')->name('home.logout');
 
 Route::group(['prefix'=>'pages'], function(){
 	Route::get('/{slug}', 'HomeController@destination')->name('home.destination');
@@ -42,6 +43,8 @@ Route::group(['prefix'=>'pages'], function(){
 	Route::get('service', function(){
 		return view('pages.service');
 	})->name('service');
+	// Route::get('account','HomeController@login')->name('account');
+	// Route::post('login','HomeController@post_login')->name('home.postlogin');
 });
 
 
@@ -65,4 +68,5 @@ Route::group(['middleware' => ['auth','admin'], 'prefix'=> 'admin'], function(){
 	Route::resource('destination','Admin\DestinationController');
 	Route::resource('package','Admin\PackageController');
 	Route::resource('tour','Admin\TourController');
+	Route::resource('rating','Admin\RatingController');
 });

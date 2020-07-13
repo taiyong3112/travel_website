@@ -34,9 +34,15 @@
 								</p>
 							</div>
 							<div class="col-md-6 col-xs-6 sign-in">
-								<a href="{{route('login')}}">
+								@if(Auth::guard('cus')->check())
+								<a href="{{route('home.logout')}}">
+									<p>Sign Out</p>
+								</a>
+								@else
+								<a href="{{route('account')}}">
 									<p><i class="fas fa-user"></i> Sign in</p>
 								</a>
+								@endif
 							</div>
 						</div>
 					</div>
@@ -223,7 +229,7 @@
 		<script src="{{url('public')}}/js/bootstrap.min.js"></script>
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 		<script type="text/javascript" src="{{url('public')}}/js/owl.carousel.min.js"></script>
- 		<script type="text/javascript" src="{{url('public')}}/js/app.js"></script>
+ 		<script type="text/javascript" src="{{url('public')}}/js/function.js"></script>
  		@yield('js')
 	</body>
 </html>

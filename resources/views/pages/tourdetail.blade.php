@@ -5,7 +5,6 @@
 @endsection
 
 @section('main')
-
 <!-- tour-banner start-->
 <section id="tour-packes-deatils">
     <div class="container">
@@ -138,32 +137,23 @@
                         <div class="all-women-heading">
                             <h3>Write a Review</h3>
                         </div>
+                        @if(auth()->check())
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="dtart-one">
                                     <div class="start-one-ras">
-                                        <h6>Rate Us</h6>
-                                        <div id="star-rating" start="0"></div>
+                                        <h6 style="padding-top: 7px">Rate Us</h6>
+                                        <div id="star-rating" start="0" name="rating"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="revs-form">
-                            <form action="#">
+                            <form action="{{route('rating.store')}}">
                                 <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Your Name:" required="">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Your Name:" required="">
-                                        </div>
-                                    </div>
                                     <div class="col-lg-12">
                                         <div class="form-group nessage-text">
-                                            <textarea name="message" id="message" rows="6" class="form-control"
+                                            <textarea name="comment" id="message" rows="6" class="form-control"
                                                 placeholder="Enter Your Message:" required=""></textarea>
                                         </div>
                                         <div class="contact-sub-btn">
@@ -173,6 +163,12 @@
                                 </div>
                             </form>
                         </div>
+                        @else
+                            <div class="login-required">
+                                <h6>Please Login to Review</h6>
+                                <a href="{{route('login')}}" class="btn btn-2">Login</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -237,6 +233,7 @@
 @endsection
 
 @section('js')
+
 <script type="text/javascript" src="{{url('public/js')}}/jsRapStar.js"></script>
 <script type="text/javascript">
     $('#star-rating').jsRapStar({
@@ -244,7 +241,14 @@
         star:'★',
         colorBack: '#014073',
         colorFront: 'white',
-        starHeight: 20
+        starHeight: 20,
+        step:true,
+        onClick:function(score){
+            $(this)[0].StarF.css({color:'white'});
+            console.log(score);
+        },
     });
+
+    
 </script>
 @stop

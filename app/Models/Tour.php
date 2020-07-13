@@ -30,5 +30,11 @@ class Tour extends Model
     {
         return $this->belongsToMany(Package::class,'package_details', 'tour_id', 'package_id');
     }
+
+    public function ratings()
+    {
+        return $this->hasMany('App\Models\Rating');
+    }
+    
     
 }
