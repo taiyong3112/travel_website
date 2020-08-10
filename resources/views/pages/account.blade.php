@@ -7,18 +7,14 @@
         <div class="row">
             <div class="login-main">
                 <h1 class="text-center">Login</h1>
-                <div class="col-md-5 login-social">
-                    <div class="social-title">Login Using Social Account</div>
-                    <a href="" class="btn btn-block btn-social btn-facebook">
-                        <span class="fab fa-facebook-f"></span> Login using Facebook
-                    </a>
-                    <a href="" class="btn btn-block btn-social btn-google">
-                        <span class="fab fa-google"></span></i> Login using Google
-                    </a>
-                </div>
-                <div class="col-md-7 login-form">
-                    <form action="" method="POST" role="form">
-                
+                <div class="login-form" style="border-left: none">
+                    @if (session('status-success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status-success') }}
+                        </div>
+                    @endif
+                    <form action="{{route('postlogin')}}" method="POST" role="form">
+                    @csrf
                         <div class="form-group">
                             <input type="email" class="form-control" name="email" placeholder="Email Address">
                         </div>
@@ -29,7 +25,7 @@
                             <div class="form-group">
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="" id="input" value="">
+                                        <input type="radio" name="" id="input" value="remember" value="1">
                                         Remember Account
                                     </label>
                                 </div>
@@ -39,10 +35,10 @@
                             <a data-toggle="modal" href='#modal-id'>Forgot Your Password ?</a>
                         </div>
 
-                        <a href="" type="submit" class="btn btn-primary">Login</a>
+                        <button type="submit" class="btn btn-primary">Login</button>
                         <a href="{{route('index')}}" type="submit" class="btn btn-danger">Cancel</a>
                     </form>
-                    <h5>Doesn't have an Account? <a href="{{route('register')}}">Register Now</a></h5>
+                    <h5>Doesn't have an Account? <a href="{{route('customer_register')}}">Register Now</a></h5>
                 </div>
             </div>
         </div>

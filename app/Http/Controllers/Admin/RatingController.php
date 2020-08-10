@@ -18,7 +18,8 @@ class RatingController extends Controller
     public function index()
     {
         $rating = Rating::orderBy('id','DESC')->get();
-        return view('admin.rating.index',compact('rating'));
+        $average = $rating->avg('rating');
+        return view('admin.rating.index',compact('rating','average'));
     }
 
     /**

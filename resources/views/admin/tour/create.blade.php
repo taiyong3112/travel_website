@@ -14,7 +14,7 @@ Create New Tour | Wend Travel
                 <h4 class="card-title">Create New Tour</h4>
             </div>
             <div class="card-body">
-                <form action="{{route('tour.store')}}" method="POST" role="form" class="form" enctype="multipart/form-data">
+                <form action="{{route('admin.tour.store')}}" method="POST" role="form" class="form" enctype="multipart/form-data">
                     @csrf
                     <div class="col-md-6">
                         <div class="form-group">
@@ -136,6 +136,10 @@ Create New Tour | Wend Travel
                                     Un Publish
                                 </label>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="adult_price" class="form-control" name="location" placeholder="Location">
                         </div>
                         <div class="form-group">
                             <label>Meta Keywords</label>

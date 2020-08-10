@@ -14,7 +14,7 @@ Create New Destination | Wend Travel
                 <h4 class="card-title">Create New Destination</h4>
             </div>
             <div class="card-body col-md-6">
-                <form action="{{route('destination.store')}}" method="POST" role="form" class="form" enctype="multipart/form-data">
+                <form action="{{route('admin.destination.store')}}" method="POST" role="form" class="form" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label>Name</label>

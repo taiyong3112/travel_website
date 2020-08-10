@@ -27,26 +27,23 @@
   <section id="blog-content">
     <div class="container">
       <div class="row">
+        @foreach($blog as $bl)
         <div class="col-lg-4 col-md-6 col-sm-12 col-12 wow fadeIn" data-wow-duration="1s">
           <div class="blog-items clas-mar">
             <div class="blog-item-img">
-              <a href="{{route('blog-detail')}}"><img src="{{url('public')}}/images/blog/1.png" alt="img" /></a>
+              <a href="{{route('blog-detail',['slug'=>$bl->slug])}}"><img src="{{url('public/images/uploads')}}/{{$bl->image}}" alt="img" style="width: 100%; height: 220px"/></a>
             </div>
             <div class="dtes-not">
               <div class="blog-item-det">
                 <h6>
-                  <a href="{{route('blog-detail')}}">What Happened My First Trip Alone</a>
+                  <a href="{{route('blog-detail',['slug'=>$bl->slug])}}">{{$bl->name}}</a>
                 </h6>
               </div>
               <div class="blog-author">
                 <div class="blog-flex-same">
-                  <div class="blog-athou-img">
-                    <a href="{{route('blog-detail')}}"><img src="{{url('public')}}/images/blog/ic.png" alt="img" /></a>
-                    <p>By:<a href="{{route('blog-detail')}}">John Doe</a></p>
-                  </div>
                   <div class="blog-times">
                     <i class="far fa-clock"></i>
-                    <p><a href="{{route('blog-detail')}}">06 Sep, 2019</a></p>
+                    <p>{{$bl->created_at}}</p>
                   </div>
                 </div>
                 <div class="icon-blog-item">
@@ -57,158 +54,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 col-12 wow fadeIn" data-wow-duration="2s">
-          <div class="blog-items clas-mar">
-            <div class="blog-item-img">
-              <a href="{{route('blog-detail')}}"><img src="{{url('public')}}/images/blog/2.png" alt="img" /></a>
-            </div>
-            <div class="dtes-not">
-              <div class="blog-item-det">
-                <h6>
-                  <a href="{{route('blog-detail')}}">10 Common Questions about Solo Travel
-                  </a>
-                </h6>
-              </div>
-              <div class="blog-author">
-                <div class="blog-flex-same">
-                  <div class="blog-athou-img">
-                    <a href="{{route('blog-detail')}}"><img src="{{url('public')}}/images/blog/ic.png" alt="img" /></a>
-                    <p>By:<a href="{{route('blog-detail')}}">John Doe</a></p>
-                  </div>
-                  <div class="blog-times">
-                    <i class="far fa-clock"></i>
-                    <p><a href="{{route('blog-detail')}}">06 Sep, 2019</a></p>
-                  </div>
-                </div>
-                <div class="icon-blog-item">
-                  <a href="#!"><i class="fas fa-comments"></i></a>
-                  <a href="#!"><i class="fas fa-share-alt"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 col-12 wow fadeIn" data-wow-duration="3s">
-          <div class="blog-items clas-mar">
-            <div class="blog-item-img">
-              <a href="{{route('blog-detail')}}"><img src="{{url('public')}}/images/blog/3.png" alt="img" /></a>
-            </div>
-            <div class="dtes-not">
-              <div class="blog-item-det">
-                <h6>
-                  <a href="{{route('blog-detail')}}">The Amazing Difference a Year of Travelling</a>
-                </h6>
-              </div>
-              <div class="blog-author">
-                <div class="blog-flex-same">
-                  <div class="blog-athou-img">
-                    <a href="{{route('blog-detail')}}"><img src="{{url('public')}}/images/blog/ic.png" alt="img" /></a>
-                    <p>By:<a href="{{route('blog-detail')}}">John Doe</a></p>
-                  </div>
-                  <div class="blog-times">
-                    <i class="far fa-clock"></i>
-                    <p><a href="{{route('blog-detail')}}">06 Sep, 2019</a></p>
-                  </div>
-                </div>
-                <div class="icon-blog-item">
-                  <a href="#!"><i class="fas fa-comments"></i></a>
-                  <a href="#!"><i class="fas fa-share-alt"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 col-12 wow fadeIn" data-wow-duration="1s">
-          <div class="blog-items clas-mar">
-            <div class="blog-item-img">
-              <a href="{{route('blog-detail')}}"><img src="{{url('public')}}/images/blog/4.png" alt="img" /></a>
-            </div>
-            <div class="dtes-not">
-              <div class="blog-item-det">
-                <h6>
-                  <a href="{{route('blog-detail')}}">What Happened My First Trip Alone</a>
-                </h6>
-              </div>
-              <div class="blog-author">
-                <div class="blog-flex-same">
-                  <div class="blog-athou-img">
-                    <a href="{{route('blog-detail')}}"><img src="{{url('public')}}/images/blog/ic.png" alt="img" /></a>
-                    <p>By:<a href="{{route('blog-detail')}}">John Doe</a></p>
-                  </div>
-                  <div class="blog-times">
-                    <i class="far fa-clock"></i>
-                    <p><a href="{{route('blog-detail')}}">06 Sep, 2019</a></p>
-                  </div>
-                </div>
-                <div class="icon-blog-item">
-                  <a href="#!"><i class="fas fa-comments"></i></a>
-                  <a href="#!"><i class="fas fa-share-alt"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 col-12 wow fadeIn" data-wow-duration="2s">
-          <div class="blog-items clas-mar">
-            <div class="blog-item-img">
-              <a href="{{route('blog-detail')}}"><img src="{{url('public')}}/images/blog/5.png" alt="img" /></a>
-            </div>
-            <div class="dtes-not">
-              <div class="blog-item-det">
-                <h6>
-                  <a href="{{route('blog-detail')}}">10 Common Questions about Solo Travel
-                  </a>
-                </h6>
-              </div>
-              <div class="blog-author">
-                <div class="blog-flex-same">
-                  <div class="blog-athou-img">
-                    <a href="{{route('blog-detail')}}"><img src="{{url('public')}}/images/blog/ic.png" alt="img" /></a>
-                    <p>By:<a href="{{route('blog-detail')}}">John Doe</a></p>
-                  </div>
-                  <div class="blog-times">
-                    <i class="far fa-clock"></i>
-                    <p><a href="{{route('blog-detail')}}">06 Sep, 2019</a></p>
-                  </div>
-                </div>
-                <div class="icon-blog-item">
-                  <a href="#!"><i class="fas fa-comments"></i></a>
-                  <a href="#!"><i class="fas fa-share-alt"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 col-12 wow fadeIn" data-wow-duration="3s">
-          <div class="blog-items clas-mar">
-            <div class="blog-item-img">
-              <a href="{{route('blog-detail')}}"><img src="{{url('public')}}/images/blog/6.png" alt="img" /></a>
-            </div>
-            <div class="dtes-not">
-              <div class="blog-item-det">
-                <h6>
-                  <a href="{{route('blog-detail')}}">The Amazing Difference a Year of Travelling</a>
-                </h6>
-              </div>
-              <div class="blog-author">
-                <div class="blog-flex-same">
-                  <div class="blog-athou-img">
-                    <a href="{{route('blog-detail')}}"><img src="{{url('public')}}/images/blog/ic.png" alt="img" /></a>
-                    <p>By:<a href="{{route('blog-detail')}}">John Doe</a></p>
-                  </div>
-                  <div class="blog-times">
-                    <i class="far fa-clock"></i>
-                    <p><a href="{{route('blog-detail')}}">06 Sep, 2019</a></p>
-                  </div>
-                </div>
-                <div class="icon-blog-item">
-                  <a href="#!"><i class="fas fa-comments"></i></a>
-                  <a href="#!"><i class="fas fa-share-alt"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
       <!-- pagination start -->
       <div class="blog-pagination d-flex justify-content-center text-center">

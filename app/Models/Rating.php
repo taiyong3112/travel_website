@@ -6,13 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model
 {
-    public function user()
+	protected $fillable = ['rating','customer_id','tour_id','comment'];
+	public $timestamps = false;
+    public function customers()
     {
-    	return $this->belongTo(User::class,'user_id','id');
+    	return $this->belongsTo(Customer::class,'customer_id','id');
     }
-    public function tour()
+    public function tours()
     {
-    	return $this->belongTo(Tour::class,'tour_id','id');
+    	return $this->belongsTo(Tour::class,'tour_id','id');
     }
 
     

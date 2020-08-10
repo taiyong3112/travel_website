@@ -48,7 +48,7 @@ class DestinationController extends Controller
         
         // dd($request->all());
         Destination::create($request->all());
-        return redirect()->route('destination.index')->with('status-success','The Destination had been added');
+        return redirect()->route('admin.destination.index')->with('status-success','The Destination had been added');
     }
 
     /**
@@ -88,7 +88,7 @@ class DestinationController extends Controller
         $request->merge(['image' => $img]);
 
         $destination->update($request->all());
-        return redirect()->route('destination.index')->with('status-success','The Destination had been updated');
+        return redirect()->route('admin.destination.index')->with('status-success','The Destination had been updated');
     }
 
     /**
@@ -100,6 +100,6 @@ class DestinationController extends Controller
     public function destroy(Destination $destination)
     {
         $destination->delete();
-        return redirect()->route('destination.index')->with('status-danger','The destination had been deleted');
+        return redirect()->route('admin.destination.index')->with('status-danger','The destination had been deleted');
     }
 }

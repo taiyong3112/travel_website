@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Tour;
 use App\Models\Destination;
 use App\Models\Package;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 use App\Http\Requests\TourRequest;
 use DB;
@@ -24,7 +25,7 @@ class TourController extends Controller
             $key = request('key');
             $tour = DB::table('tours')->where('name', 'LIKE', '%'.$key.'%')->paginate(5);
         }
-        return view('admin.tour.index',compact('tour'));
+        return view('admin.tour.index',compact('tour','rating','average'));
     }
 
     /**
@@ -61,6 +62,8 @@ class TourController extends Controller
         $tour->adult_price = $request->adult_price;
         $tour->children_price = $request->children_price;
         $tour->duration = $request->duration;
+        $tour->status = $request->status;
+        $tour->location = $request->location;
         $tour->meta_keywords = $request->meta_keywords;
         $tour->meta_descriptions = $request->meta_descriptions;
 
@@ -69,7 +72,7 @@ class TourController extends Controller
         $tour->packages()->attach($request->package);
 
         
-        return redirect()->route('tour.index')->with('status-success','New Tour had been added');
+        return redirect()->route('admin.tour.index')->with('status-success','New Tour had been added');
     }
 
     /**
@@ -126,7 +129,7 @@ class TourController extends Controller
 
         $tour->packages()->detach($request->id);
         $tour->packages()->attach($request->package);
-        return redirect()->route('tour.index')->with('status-success','New Tour had been added');
+        return redirect()->route('admin.tour.index')->with('status-success','New Tour had been added');
     }
 
     /**
@@ -139,6 +142,6 @@ class TourController extends Controller
     {
         $tour->delete();
         $tour->packages()->detach($tour->id);
-        return redirect()->route('tour.index')->with('status-success','Tour had been deleted');
+        return redirect()->route('admin.tour.index')->with('status-success','Tour had been deleted');
     }
 }

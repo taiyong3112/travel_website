@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('css')
-<link rel="stylesheet" href="{{url('public/css')}}/jsRapStar.css">
+<link rel="stylesheet" href="{{url('public/css')}}/star-rating.css">
 @endsection
 
 @section('main')
@@ -38,26 +38,33 @@
                         <div class="tour-heading-detailse">
                             <h2>{{$tour->name}}</h2>
                             <div class="start-text-details">
-                                <div class="start-icon-deta">
+                                <!-- <div class="start-icon-deta">
                                     <a href="#"><i class="fas fa-star"></i></a>
                                     <a href="#"><i class="fas fa-star"></i></a>
                                     <a href="#"><i class="fas fa-star"></i></a>
                                     <a href="#"><i class="fas fa-star"></i></a>
                                     <a href="#"><i class="fas fa-star"></i></a>
+                                </div> -->
+                                <div class="stars-outer">
+                                    <div class="stars-inner"></div>
+                                </div>
+                                <div class="review-score">
+                                    <h6>{{number_format($average,1)}}</h6>
+                                    <input type="hidden" id="average" value={{$average}}>
                                 </div>
                                 <div class="revews">
-                                    <h6>21 Review</h6>
+                                    <h6>{{$rating->count()}} Đánh giá</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="tour-main-informa">
-                        <h6>5 Day <span>|</span></h6>
-                        <h6>18+ <span>|</span></h6>
-                        <h6>20 People <span>|</span></h6>
-                        <h6>Adventure <span>|</span></h6>
-                        <h6>25 September</h6>
-                    </div> -->
+                    <div class="tour-main-informa">
+                        <h6>Giá người lớn: </h6>
+                        <h6>{{number_format($tour->adult_price)}} VNĐ<span>|</span></h6>
+                        <h6>Giá trẻ em: </h6>
+                        <h6>{{number_format($tour->children_price)}} VNĐ</h6>
+<!--                         <h6>25 September</h6> -->
+                    </div>
                     <div class="det-asor-img">
                         <img src="{{url('public/images/uploads')}}/{{$tour->image}}" alt="img">
                     </div>
@@ -110,119 +117,135 @@
                     </div>
                     <div class="client-revews">
                         <h5>Our Clients Review</h5>
+                        @foreach($rating as $rate)
                         <div class="client-info-rev">
                             <div class="cliennt-img">
                                 <img src="{{url('public')}}/images/client/replay.png" alt="img">
                             </div>
                             <div class="clients-desnigation">
-                                <h5>Jessica Ana</h5>
-                                <p>Ut accumsan lorem scelerisque mauris congue posuere. Aliquam elementum fermentum
-                                    accumsan. Mauris id blandit eros. Nullam in convallis dui. Nunc sit amet justo
-                                    porta, euismod nisi at, vehicula ligula. Pellentesque ante orci, </p>
+                                <h5>{{$rate->customers->f_name}}</h5>
+                                <h6>
+                                    @for ($i = 0; $i < 5; $i++)
+                                        @if ($rate->rating - $i >= 1)
+                                            {{--Full Start--}}
+                                            <i class="fas fa-star full-star"> </i>
+                                        @else
+                                            {{--Empty Start--}}
+                                            <i class="far fa-star empty-star"> </i>
+                                        @endif
+                                    @endfor
+                                    {{$rate->rating}}
+                                </h6>
+                                <input type="hidden" id="user_rating" value="{{$rate->rating}}">
+                                <p>{{$rate->comment}}</p>
                             </div>
                         </div>
-                        <div class="client-info-rev">
-                            <div class="cliennt-img">
-                                <img src="{{url('public')}}/images/client/replay-1.png" alt="img">
-                            </div>
-                            <div class="clients-desnigation">
-                                <h5>Marry Smith</h5>
-                                <p>Ut accumsan lorem scelerisque mauris congue posuere. Aliquam elementum fermentum
-                                    accumsan. Mauris id blandit eros. Nullam in convallis dui. Nunc sit amet justo
-                                    porta, euismod nisi at, vehicula ligula. Pellentesque ante orci, </p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
-                    <div class="client-start-comment">
-                        <div class="all-women-heading">
-                            <h3>Write a Review</h3>
-                        </div>
-                        @if(auth()->check())
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="dtart-one">
-                                    <div class="start-one-ras">
-                                        <h6 style="padding-top: 7px">Rate Us</h6>
-                                        <div id="star-rating" start="0" name="rating"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="revs-form">
-                            <form action="{{route('rating.store')}}">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group nessage-text">
-                                            <textarea name="comment" id="message" rows="6" class="form-control"
-                                                placeholder="Enter Your Message:" required=""></textarea>
-                                        </div>
-                                        <div class="contact-sub-btn">
-                                            <a href="#!" class="btn submit">Submit</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        @else
+                    @if(!Auth::guard('cus')->check())
+                        <div class="client-start-comment">
                             <div class="login-required">
                                 <h6>Please Login to Review</h6>
-                                <a href="{{route('login')}}" class="btn btn-2">Login</a>
+                                <a href="{{route('account')}}" class="btn btn-login">Login</a>
                             </div>
-                        @endif
-                    </div>
+                        </div>
+                    @else
+                        <div class="client-start-comment">
+                            <div class="all-women-heading">
+                                <h3>Write a Review</h3>
+                            </div>
+                            <div class="revs-form">
+                                <div class="row"> 
+                                    <form action="{{route('home.rating',['slug'=>$tour->slug])}}" method="POST">
+                                        @csrf
+                                        <div class="form-group">
+                                            <input type="number" id="rating-system" name="rating" class="rating" min="0" max="5" step="1">
+                                        </div>
+                                        <div class="form-group nessage-text">
+                                            <textarea name="comment" id="message" rows="6" class="form-control"
+                                                placeholder="Enter Your Review:" required=""></textarea>
+                                        </div>
+                                        <div class="contact-sub-btn">
+                                            <button type="submit" class="btn submit">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="col-lg-4 col-md-12 col-sm-12 col-12">
                 <div class="bookoing-secrty">
                     <div class="all-pacj-dfgh">
-                        <h6>Package Details</h6>
+                        <h6>Book Tour</h6>
                     </div>
                     <div class="bookk0-natd-form">
-                        <form action="#">
+                    @if(Auth::guard('cus')->check())
+                        <form action="{{route('booking',$tour->id)}}" method="POST">
+                            @csrf
                             <div class="form-group">
-                                <label for="name">First name</label>
-                                <input type="text" class="form-control" placeholder="First Name" id="name">
-                            </div>
-                            <div class="form-group">
-                                <label for="last-name">Last Name</label>
-                                <input type="text" class="form-control" placeholder="Last Name" id="last-name">
+                                <label for="name">Họ và Tên</label>
+                                <input type="text" class="form-control" value="{{Auth::guard('cus')->user()->l_name}} {{Auth::guard('cus')->user()->f_name}}" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" name="date" class="form-control" placeholder="Email Address" id="email">
+                                <input type="email" class="form-control" value="{{Auth::guard('cus')->user()->email}}" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="phone">Phone</label>
-                                <input type="text" name="date" class="form-control" placeholder="Phone Number" id="phone">
+                                <label for="phone">Số Điện Thoại</label>
+                                <input type="text" class="form-control" value="{{Auth::guard('cus')->user()->phone}}" readonly>
                             </div>
-
-                            <div class="form-group mainm-sel">
-                                <label for="text" id="form-control">Guest:</label>
-                                <div class="select-box">
-                                    <span class="sec-po"></span>
-                                    <select id="text">
-                                        <option value="0">Number of Guest</option>
-                                        <option value="1">2</option>
-                                        <option value="2">3</option>
-                                        <option value="3">4</option>
-                                    </select>
+                            <div class="form-group">
+                                <label for="start_date">Ngày đi</label>
+                                <input type="text" id="start_date" class="form-control date_input" name="start_date">
+                            </div>
+                            <div class="form-group">
+                                <label for="adult_number">Người Lớn</label>
+                                <input type="text" name="adult_number" id="adult_number" class="form-control number_input">
+                            </div>
+                            <div class="form-group">
+                                <label for="children_number">Trẻ Em</label>
+                                <input type="text" name="children_number" id="children_number" class="form-control number_input">
+                            </div>
+                            <input type="hidden" value="{{$tour->adult_price}}" id="adult_price">
+                            <input type="hidden" value="{{$tour->children_price}}" id="children_price">
+                            <div class="form-group">
+                                <label for="note">Ghi chú</label>
+                                <textarea name="note" class="form-control" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="hotel_status">Bạn có muốn ở khách sạn chúng tôi sắp đặt?</label>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="hotel_status" value="1" checked>
+                                        Có
+                                    </label>
+                                    <label class="pull-right">
+                                        <input type="radio" name="hotel_status" value="0">
+                                        Không
+                                    </label>
                                 </div>
                             </div>
-                            <div class="travel-tyepe">
+                            <div class="travel-tyepe">  
                                 <div class="flex-type">
-                                    <label for="text">Total Price:</label>
+                                    <label for="text">Thành tiền: (VND)</label>
                                 </div>
-                                <div class="check-box-many">
-                                    <div class="total-price">
-                                        <h3>$150</h3>
-                                    </div>
-                                </div>
+                                <input type="text" name="total_price" class="total_price" id="total_price" readonly> 
                             </div>
                             <div class="sunb-btn-naple">
-                                <a href="#!" class="btn submit widet">Submit</a>
+                                <button type="submit" class="btn submit widet">Submit</button>
                             </div>
-
                         </form>
+                    @else
+                        <div class="all-women-heading">
+                            <h3>Write a Review</h3>
+                        </div>
+                        <div class="login-required">
+                            <h6>Please Login to Review</h6>
+                            <a href="{{route('account')}}" class="btn btn-login">Login</a>
+                        </div>
+                    @endif
                     </div>
                 </div>
             </div>
@@ -233,22 +256,56 @@
 @endsection
 
 @section('js')
-
-<script type="text/javascript" src="{{url('public/js')}}/jsRapStar.js"></script>
+<script type="text/javascript" src="{{url('public/js')}}/simple.money.format.js"></script>
+<script type="text/javascript" src="{{url('public/js')}}/star-rating.js"></script>
 <script type="text/javascript">
-    $('#star-rating').jsRapStar({
-        length: 5,
-        star:'★',
-        colorBack: '#014073',
-        colorFront: 'white',
-        starHeight: 20,
-        step:true,
-        onClick:function(score){
-            $(this)[0].StarF.css({color:'white'});
-            console.log(score);
-        },
-    });
+    
 
+    //auto calculate price
+        $('.number_input').on('change',function(){
+            var x = 0;
+            var y = 0;
+            var ap = 0;
+            var cp = 0;
+            x = $('#adult_number').val();
+            x = parseInt(x);
+
+            ap = $('#adult_price').val();
+            ap = parseInt(ap);
+
+            cp = $('#children_price').val();
+            cp = parseInt(cp);
+
+            y = $('#children_number').val();
+            y = parseInt(y);
+
+            if(Number.isNaN(x)){
+                x = 0;
+            }else if(Number.isNaN(y)){
+                y = 0;
+            };
+            $('#total_price').val(x*ap + y*cp);
+            $('.total_price').simpleMoneyFormat();
+        });
+        //date picker
+        $('#start_date').Zebra_DatePicker({
+            direction: 1
+        });
+
+    //display average star tour
+    var average_star = $('#average').val();
+    var totalStar = 5;
+
+    document.addEventListener('DOMContentLoaded', getAverage);
+
+    function getAverage(){
+        //Calculate Percentage
+        var starPercentage = (average_star / totalStar) * 100 + "%";
+        // //Set width to stars-inner to percentage
+        $('.stars-inner').css('width',starPercentage);
+
+    }
+    //display star user
     
 </script>
 @stop

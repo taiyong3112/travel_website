@@ -16,6 +16,8 @@ class Tour extends Model
     	'adult_price',
     	'children_price',
     	'duration',
+        'status',
+        'location',
         'meta_keywords',
         'meta_descriptions'
     ];
@@ -23,7 +25,7 @@ class Tour extends Model
     
     public function destinations()
     {
-        return $this->belongsTo('App\Models\Destination','destination_id');
+        return $this->belongsTo(Destination::class,'destination_id');
     }
     
     public function packages()
@@ -33,8 +35,12 @@ class Tour extends Model
 
     public function ratings()
     {
-        return $this->hasMany('App\Models\Rating');
+        return $this->hasMany(Rating::class,'tour_id','id');
     }
-    
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
     
 }

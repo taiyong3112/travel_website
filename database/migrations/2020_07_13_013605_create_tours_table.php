@@ -25,6 +25,7 @@ class CreateToursTable extends Migration
             $table->integer('children_price');
             $table->integer('duration');
             $table->tinyInteger('status')->default(0);
+            $table->text('location');
             $table->string('meta_keywords', 100)->nullable();
             $table->string('meta_descriptions', 160)->nullable();
             $table->timestamp('created_at')->useCurrent();

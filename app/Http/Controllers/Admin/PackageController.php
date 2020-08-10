@@ -44,7 +44,7 @@ class PackageController extends Controller
     public function store(PackageRequest $request)
     {
         Package::create($request->all());
-        return redirect()->route('package.index')->with('status-success','The Package had been added');
+        return redirect()->route('admin.package.index')->with('status-success','The Package had been added');
     }
 
     /**
@@ -79,7 +79,7 @@ class PackageController extends Controller
     public function update(Request $request, Package $package)
     {
         $package->update($request->all());
-        return redirect()->route('package.index')->with('status-success','The Package had been updated');
+        return redirect()->route('admin.package.index')->with('status-success','The Package had been updated');
     }
 
     /**
@@ -91,6 +91,6 @@ class PackageController extends Controller
     public function destroy(Package $package)
     {
         $package->delete();
-        return redirect()->route('package.index')->with('status-danger','The Package had been deleted');
+        return redirect()->route('admin.package.index')->with('status-danger','The Package had been deleted');
     }
 }

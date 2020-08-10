@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
+
 class AdminMiddleware
 {
     /**
@@ -16,12 +17,19 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->role == 'admin'){
-            return $next($request);
+        if (!Auth::check()) { // chưa đăng nhập
+            return redirect()->route('login');
         }
-        else{
-            return redirect('/home')->with('status','You are not allowed to access to Admin Dashboard');
+
+        $user = Auth::user(); //lấy thông tin user khi đã đăng nhập
+
+        // kiểm tra quyền của người dùng
+        $route = $request->route()->getName();
+
+        if ($user->cant($route)) {
+            return redirect()->route('admin.error',['code' => 403]);
         }
-        
+        // dd($user->cant($route));
+        return $next($request);
     }
 }

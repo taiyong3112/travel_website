@@ -15,16 +15,19 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('customer_id');
+            $table->unsignedInteger('tour_id');
             $table->tinyInteger('status')->default(0);
             $table->date('start_date');
-            $table->date('end_date');
             $table->integer('adult_number');
             $table->integer('children_number');
-            $table->integer('total_price');
-            $table->string('note', 200);
+            $table->string('total_price');
+            $table->string('note')->nullable();
             $table->tinyInteger('hotel_status')->default(0);
             $table->timestamp('created_at')->useCurrent();
 
+            $table->foreign('tour_id')->references('id')->on('tours')->onDelete('cascade');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
         });
     }
 

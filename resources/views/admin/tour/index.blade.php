@@ -12,7 +12,7 @@ Tour | Wend Travel
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title" style="margin-bottom: 20px">Tour
-					<a href="{{route('tour.create')}}" class="btn btn-primary float-right" style="margin:0 0 15px 0">ADD</a>
+					<a href="{{route('admin.tour.create')}}" class="btn btn-primary float-right" style="margin:0 0 15px 0">ADD</a>
                 </h4>
                 @if (session('status-success'))
                     <div class="alert alert-success" role="alert">
@@ -45,6 +45,7 @@ Tour | Wend Travel
                             <th>Adults Price</th>
                             <th>Children Price</th>
                             <th>Duration</th>
+                            <th>Rating</th>
                             <th>EDIT</th>
                             <th>DELETE</th>
                         </thead>
@@ -62,10 +63,21 @@ Tour | Wend Travel
                                 <td>{{number_format($tr->children_price)}} VNĐ</td>
                                 <td>{{$tr->duration}}</td>
                                 <td>
-                                    <a href="{{route('tour.edit',$tr->id)}}" class="btn btn-success btn-sm">EDIT</a>
+                                    <a href="">
+                                        <div class="stars-outer">
+                                            <div class="stars-inner"></div>
+                                        </div>
+                                        <div class="review-score">
+                                            <h6>{{number_format($average,1)}}</h6>
+                                            <input type="hidden" id="average" value={{$average}}>
+                                        </div>
+                                    </a>
                                 </td>
                                 <td>
-                                    <form action="{{route('tour.destroy',$tr->id)}}" method="POST">
+                                    <a href="{{route('admin.tour.edit',$tr->id)}}" class="btn btn-success btn-sm">EDIT</a>
+                                </td>
+                                <td>
+                                    <form action="{{route('admin.tour.destroy',$tr->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">DELETE</button>

@@ -13,7 +13,7 @@ Edit Destination | Wend Travel
                 <h4 class="card-title">Edit Destination</h4>
             </div>
             <div class="card-body col-md-6">
-                <form action="{{route('destination.update',$dest->id)}}" method="POST" role="form" class="form" enctype="multipart/form-data">
+                <form action="{{route('admin.destination.update',$dest->id)}}" method="POST" role="form" class="form" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">

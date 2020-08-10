@@ -14,8 +14,8 @@ class CreateTagDetailsTable extends Migration
     public function up()
     {
         Schema::create('tag_details', function (Blueprint $table) {
-            $table->unsignedInteger('tour_id');
-            $table->foreign('tour_id')->references('id')->on('tours')->onDelete('cascade');
+            $table->unsignedInteger('blog_id');
+            $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
             $table->unsignedInteger('tag_id');
             $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
         });

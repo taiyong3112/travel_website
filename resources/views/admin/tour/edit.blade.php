@@ -14,7 +14,7 @@ Update Tour | Wend Travel
                 <h4 class="card-title">Update Tour</h4>
             </div>
             <div class="card-body col-md-6">
-                <form action="{{route('tour.update',$tour->id)}}" method="POST" role="form" class="form" enctype="multipart/form-data">
+                <form action="{{route('admin.tour.update',$tour->id)}}" method="POST" role="form" class="form" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">

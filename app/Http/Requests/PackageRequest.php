@@ -31,6 +31,6 @@ class PackageRequest extends FormRequest
     {
         return [
             'name.required' => 'Package name cannot be blanked'
-        ]
+        ];
     }
 }

@@ -12,7 +12,7 @@ Package | Wend Travel
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title" style="margin-bottom: 20px">Package
-					<a href="{{route('package.create')}}" class="btn btn-primary float-right" style="margin:0 0 15px 0">ADD</a>
+					<a href="{{route('admin.package.create')}}" class="btn btn-primary float-right" style="margin:0 0 15px 0">ADD</a>
                 </h4>
                 @if (session('status-success'))
                     <div class="alert alert-success" role="alert">
@@ -52,10 +52,10 @@ Package | Wend Travel
                                 <td>{{$pac->status}}</td>
                                 <td>{{$pac->created_at}}</td>
                                 <td>
-                                    <a href="{{route('package.edit',$pac->id)}}" class="btn btn-success btn-sm">EDIT</a>
+                                    <a href="{{route('admin.package.edit',$pac->id)}}" class="btn btn-success btn-sm">EDIT</a>
                                 </td>
                                 <td>
-                                    <form action="{{route('package.destroy',$pac->id)}}" method="POST">
+                                    <form action="{{route('admin.package.destroy',$pac->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">DELETE</button>

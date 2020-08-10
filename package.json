@@ -22,5 +22,10 @@
         "sass-loader": "^8.0.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "bootstrap4-toggle": "^3.6.1",
+        "chocolat": "^1.0.3",
+        "nanogallery2": "^3.0.2"
     }
 }

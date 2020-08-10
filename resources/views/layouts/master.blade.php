@@ -28,12 +28,12 @@
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
   <!-- CSS Files -->
   <link href="{{url('public')}}/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
   <link href="{{url('public')}}/assets/css/now-ui-dashboard.css" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="{{url('public')}}/assets/demo/demo.css" rel="stylesheet" />
+  <link href="{{url('public')}}/assets/css/style.css" rel="stylesheet" />
   <script type="text/javascript">
     var base_url = function(){
       return "{{url('')}}";
@@ -46,6 +46,9 @@
 </head>
 
 <body class="">
+  <?php 
+    $user = Auth::user();
+   ?>
   <div class="wrapper ">
     
     <div class="sidebar" data-color="blue">
@@ -66,36 +69,94 @@
               <p>Dashboard</p>
             </a>
           </li>
+          @if($user->can('admin.destination.index'))
           <li class="{{'admin/destination' == request()->path() ? 'active' : ''}}">
-            <a href="{{route('destination.index')}}">
-              <i class="now-ui-icons education_atom"></i>
+            <a href="{{route('admin.destination.index')}}">
+              <i class="now-ui-icons location_pin"></i>
               <p>Destination</p>
             </a>
           </li>
+          @endif
+          @if($user->can('admin.package.index'))
           <li class="{{'admin/package' == request()->path() ? 'active' : ''}}">
-            <a href="{{route('package.index')}}">
+            <a href="{{route('admin.package.index')}}">
               <i class="now-ui-icons business_briefcase-24"></i>
               <p>Package</p>
             </a>
           </li>
+          @endif
+          @if($user->can('admin.tour.index'))
           <li class="{{'admin/tour' == request()->path() ? 'active' : ''}}">
-            <a href="{{route('tour.index')}}">
-              <i class="now-ui-icons ui-1_bell-53"></i>
+            <a href="{{route('admin.tour.index')}}">
+              <i class="now-ui-icons location_map-big"></i>
               <p>Tour</p>
             </a>
           </li>
-          <li class="{{'admin/role-register' == request()->path() ? 'active' : ''}}">
-            <a href="{{route('admin.role-register')}}">
-              <i class="now-ui-icons users_single-02"></i>
-              <p>User Profile</p>
+          @endif
+          @if($user->can('admin.rating.index'))
+          <li class="{{'admin/rating' == request()->path() ? 'active' : ''}}">
+            <a href="{{route('admin.rating.index')}}">
+              <i class="now-ui-icons location_map-big"></i>
+              <p>Rating</p>
             </a>
           </li>
+          @endif
+          @if($user->can('admin.booking'))
+          <li class="{{'admin/booking' == request()->path() ? 'active' : ''}}">
+            <a href="{{route('admin.booking')}}">
+              <i class="now-ui-icons location_bookmark"></i>
+              <p>Booking</p>
+            </a>
+          </li>
+          @endif
+          @if($user->can('admin.role.index'))
+          <li class="{{'admin/role' == request()->path() ? 'active' : ''}}">
+            <a href="{{route('admin.role.index')}}">
+              <i class="now-ui-icons education_paper"></i>
+              <p>Role</p>
+            </a>
+          </li>
+          @endif
+          @if($user->can('admin.user.index'))
+          <li class="{{'admin/user' == request()->path() ? 'active' : ''}}">
+            <a href="{{route('admin.user.index')}}">
+              <i class="now-ui-icons users_single-02"></i>
+              <p>User List</p>
+            </a>
+          </li>
+          @endif
+          @if($user->can('admin.gallery.index'))
+          <li class="{{'admin/gallery' == request()->path() ? 'active' : ''}}">
+            <a href="{{route('admin.gallery.index')}}">
+              <i class="now-ui-icons design_image"></i>
+              <p>Gallery</p>
+            </a>
+          </li>
+          @endif
+          @if($user->can('admin.tag.index'))
+          <li class="{{'admin/tag' == request()->path() ? 'active' : ''}}">
+            <a href="{{route('admin.tag.index')}}">
+              <i class="now-ui-icons design_image"></i>
+              <p>Tag</p>
+            </a>
+          </li>
+          @endif
+          @if($user->can('admin.blog.index'))
+          <li class="{{'admin/blog' == request()->path() ? 'active' : ''}}">
+            <a href="{{route('admin.blog.index')}}">
+              <i class="now-ui-icons design_image"></i>
+              <p>Blog</p>
+            </a>
+          </li>
+          @endif
+          @if($user->can('admin.file'))
           <li class="{{'admin/file-manager' == request()->path() ? 'active' : ''}}">
             <a href="{{route('admin.file')}}">
-              <i class="now-ui-icons users_single-02"></i>
+              <i class="now-ui-icons design-2_ruler-pencil"></i>
               <p>File Manager</p>
             </a>
           </li>
+          @endif
         </ul>
       </div>
     </div>
@@ -228,6 +289,7 @@
 <script src="{{url('public')}}/assets/js/core/jquery.min.js"></script>
 <script src="{{url('public')}}/assets/js/core/popper.min.js"></script>
 <script src="{{url('public')}}/assets/js/core/bootstrap.min.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="{{url('public')}}/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <!--  Google Maps Plugin    -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>

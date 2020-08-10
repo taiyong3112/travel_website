@@ -18,7 +18,6 @@ class AddData extends Migration
             'phone' => '0956681234',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('123456789'),
-            'role' => 'admin'
         ));
     }
 

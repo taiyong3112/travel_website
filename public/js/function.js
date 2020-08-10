@@ -120,4 +120,6 @@ $(document).ready(function(){
         $('.faq-group').on('hidden.bs.collapse', toggleIcon);
         $('.faq-group').on('shown.bs.collapse', toggleIcon);
 
+
+        
 })

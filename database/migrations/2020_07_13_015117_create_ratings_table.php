@@ -14,12 +14,13 @@ class CreateRatingsTable extends Migration
         Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('rating');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('customer_id');
             $table->unsignedInteger('tour_id');
             $table->string('comment');
+            $table->tinyInteger('rating')->default(0);
             $table->timestamp('created_at')->useCurrent();
             
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->foreign('tour_id')->references('id')->on('tours')->onDelete('cascade');
         });
     }

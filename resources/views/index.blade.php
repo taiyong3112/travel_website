@@ -150,24 +150,26 @@
 			</div>
 			<div class="container">
 				<div class="tour-slider owl-carousel owl-theme">
+					@foreach($tour as $tr)
 					<div class="des-cov item">
 			          <div class="des-img">
-			            <a href="#!"><img src="{{url('public')}}/images/tours/d-1.png" alt="img" /></a>
+			            <a href="{{route('home.destination',['slug'=>$tr->slug])}}"><img src="{{url('public/images/uploads')}}/{{$tr->image}}" alt="img" /></a>
 			          </div>
 			          <div class="des-para">
 			            <div class="dayt">
-			              <h6><a href="#!">Thailand</a></h6>
-			              <p>1day 160$</p>
+			              <h6>
+			              	<a href="{{route('home.destination',['slug'=>$tr->slug])}}">{{$tr->name}}</a>
+			              </h6>
+			              <p>{{$tr->duration}} Ngày</p>
 			            </div>
 			            <div class="real-dat-para">
 			              <p>
-			                Proin nec efficitur nibh. Curabitur posuere aliquam arcu, et
-			                euismod felis sagittis sed
+			                {{$tr->summary}}
 			              </p>
 			            </div>
 			            <div class="des-button-icon">
 			              <div class="das-into-btn">
-			                <a href="#!" class="btn btn-3" data-toggle="modal" data-target="#myModal">Book Now</a>
+			                <a href="{{route('home.destination',['slug'=>$tr->slug])}}" class="btn btn-3">Xem chi tiết</a>
 			              </div>
 			              <div class="start-icon-des">
 			                <i class="fas fa-star"></i>
@@ -179,238 +181,7 @@
 			            </div>
 			          </div>
 			        </div>
-			        <div class="des-cov item">
-			          <div class="des-img">
-			            <a href="#!"><img src="{{url('public')}}/images/tours/d-1.png" alt="img" /></a>
-			          </div>
-			          <div class="des-para">
-			            <div class="dayt">
-			              <h6><a href="#!">Thailand</a></h6>
-			              <p>1day 160$</p>
-			            </div>
-			            <div class="real-dat-para">
-			              <p>
-			                Proin nec efficitur nibh. Curabitur posuere aliquam arcu, et
-			                euismod felis sagittis sed
-			              </p>
-			            </div>
-			            <div class="des-button-icon">
-			              <div class="das-into-btn">
-			                <a href="#!" class="btn btn-3" data-toggle="modal" data-target="#myModal">Book Now</a>
-			              </div>
-			              <div class="start-icon-des">
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			              </div>
-			            </div>
-			          </div>
-			        </div>
-			        <div class="des-cov item">
-			          <div class="des-img">
-			            <a href="#!"><img src="{{url('public')}}/images/tours/d-1.png" alt="img" /></a>
-			          </div>
-			          <div class="des-para">
-			            <div class="dayt">
-			              <h6><a href="#!">Thailand</a></h6>
-			              <p>1day 160$</p>
-			            </div>
-			            <div class="real-dat-para">
-			              <p>
-			                Proin nec efficitur nibh. Curabitur posuere aliquam arcu, et
-			                euismod felis sagittis sed
-			              </p>
-			            </div>
-			            <div class="des-button-icon">
-			              <div class="das-into-btn">
-			                <a href="#!" class="btn btn-3" data-toggle="modal" data-target="#myModal">Book Now</a>
-			              </div>
-			              <div class="start-icon-des">
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			              </div>
-			            </div>
-			          </div>
-			        </div>
-			        <div class="des-cov item">
-			          <div class="des-img">
-			            <a href="#!"><img src="{{url('public')}}/images/tours/d-1.png" alt="img" /></a>
-			          </div>
-			          <div class="des-para">
-			            <div class="dayt">
-			              <h6><a href="#!">Thailand</a></h6>
-			              <p>1day 160$</p>
-			            </div>
-			            <div class="real-dat-para">
-			              <p>
-			                Proin nec efficitur nibh. Curabitur posuere aliquam arcu, et
-			                euismod felis sagittis sed
-			              </p>
-			            </div>
-			            <div class="des-button-icon">
-			              <div class="das-into-btn">
-			                <a href="#!" class="btn btn-3" data-toggle="modal" data-target="#myModal">Book Now</a>
-			              </div>
-			              <div class="start-icon-des">
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			              </div>
-			            </div>
-			          </div>
-			        </div>
-			        <div class="des-cov item">
-			          <div class="des-img">
-			            <a href="#!"><img src="{{url('public')}}/images/tours/d-1.png" alt="img" /></a>
-			          </div>
-			          <div class="des-para">
-			            <div class="dayt">
-			              <h6><a href="#!">Thailand</a></h6>
-			              <p>1day 160$</p>
-			            </div>
-			            <div class="real-dat-para">
-			              <p>
-			                Proin nec efficitur nibh. Curabitur posuere aliquam arcu, et
-			                euismod felis sagittis sed
-			              </p>
-			            </div>
-			            <div class="des-button-icon">
-			              <div class="das-into-btn">
-			                <a href="#!" class="btn btn-3" data-toggle="modal" data-target="#myModal">Book Now</a>
-			              </div>
-			              <div class="start-icon-des">
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			              </div>
-			            </div>
-			          </div>
-			        </div>
-			        <div class="des-cov item">
-			          <div class="des-img">
-			            <a href="#!"><img src="{{url('public')}}/images/tours/d-1.png" alt="img" /></a>
-			          </div>
-			          <div class="des-para">
-			            <div class="dayt">
-			              <h6><a href="#!">Thailand</a></h6>
-			              <p>1day 160$</p>
-			            </div>
-			            <div class="real-dat-para">
-			              <p>
-			                Proin nec efficitur nibh. Curabitur posuere aliquam arcu, et
-			                euismod felis sagittis sed
-			              </p>
-			            </div>
-			            <div class="des-button-icon">
-			              <div class="das-into-btn">
-			                <a href="#!" class="btn btn-3" data-toggle="modal" data-target="#myModal">Book Now</a>
-			              </div>
-			              <div class="start-icon-des">
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			              </div>
-			            </div>
-			          </div>
-			        </div>
-			        <div class="des-cov item">
-			          <div class="des-img">
-			            <a href="#!"><img src="{{url('public')}}/images/tours/d-1.png" alt="img" /></a>
-			          </div>
-			          <div class="des-para">
-			            <div class="dayt">
-			              <h6><a href="#!">Thailand</a></h6>
-			              <p>1day 160$</p>
-			            </div>
-			            <div class="real-dat-para">
-			              <p>
-			                Proin nec efficitur nibh. Curabitur posuere aliquam arcu, et
-			                euismod felis sagittis sed
-			              </p>
-			            </div>
-			            <div class="des-button-icon">
-			              <div class="das-into-btn">
-			                <a href="#!" class="btn btn-3" data-toggle="modal" data-target="#myModal">Book Now</a>
-			              </div>
-			              <div class="start-icon-des">
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			              </div>
-			            </div>
-			          </div>
-			        </div>
-			        <div class="des-cov item">
-			          <div class="des-img">
-			            <a href="#!"><img src="{{url('public')}}/images/tours/d-1.png" alt="img" /></a>
-			          </div>
-			          <div class="des-para">
-			            <div class="dayt">
-			              <h6><a href="#!">Thailand</a></h6>
-			              <p>1day 160$</p>
-			            </div>
-			            <div class="real-dat-para">
-			              <p>
-			                Proin nec efficitur nibh. Curabitur posuere aliquam arcu, et
-			                euismod felis sagittis sed
-			              </p>
-			            </div>
-			            <div class="des-button-icon">
-			              <div class="das-into-btn">
-			                <a href="#!" class="btn btn-3" data-toggle="modal" data-target="#myModal">Book Now</a>
-			              </div>
-			              <div class="start-icon-des">
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			              </div>
-			            </div>
-			          </div>
-			        </div>
-			        <div class="des-cov item">
-			          <div class="des-img">
-			            <a href="#!"><img src="{{url('public')}}/images/tours/d-1.png" alt="img" /></a>
-			          </div>
-			          <div class="des-para">
-			            <div class="dayt">
-			              <h6><a href="#!">Thailand</a></h6>
-			              <p>1day 160$</p>
-			            </div>
-			            <div class="real-dat-para">
-			              <p>
-			                Proin nec efficitur nibh. Curabitur posuere aliquam arcu, et
-			                euismod felis sagittis sed
-			              </p>
-			            </div>
-			            <div class="des-button-icon">
-			              <div class="das-into-btn">
-			                <a href="#!" class="btn btn-3" data-toggle="modal" data-target="#myModal">Book Now</a>
-			              </div>
-			              <div class="start-icon-des">
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			                <i class="fas fa-star"></i>
-			              </div>
-			            </div>
-			          </div>
-			        </div>
+			        @endforeach
 				</div>
 			</div>
 		</div>

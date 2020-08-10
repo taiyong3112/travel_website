@@ -32,16 +32,12 @@
             <div class="col-lg-9 col-md-12 col-sm-12 col-12">
                 <div class="all-single-cover">
                     <div class="blog-sighn-img  wow fadeIn" data-wow-duration="3s">
-                        <a href="#!"><img src="{{url('public')}}/images/blog-single.png" alt="img"></a>
+                        <a href="#!"><img src="{{url('public/images/uploads')}}/{{$blogs->image}}" alt="img"></a>
                     </div>
                     <div class="authour-single">
-                        <div class="al-img-at1">
-                            <a href="#!"><img src="{{url('public')}}/images/blog/ic.png" alt=""></a>
-                            <p>By:<a href="#!">John Doe</a></p>
-                        </div>
                         <div class="al-img-at2">
                             <a href="#!"><i class="fas fa-calendar-alt"></i></a>
-                            <p><a href="#!">Sep 06, 2019</a></p>
+                            <p>{{$blogs->created_at}}</p>
                         </div>
                         <div class="al-img-at2">
                             <a href="#!"><i class="fas fa-comments"></i></a>
@@ -49,46 +45,15 @@
                         </div>
                     </div>
                     <div class="blog-single-dd-hed">
-                        <h4><a href="#!">10 Common Question About Solo Travel</a></h4>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem den aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                            architecto beatae vitae dicta sunt. </p>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="dubbel-img wow fadeIn" data-wow-duration="3s">
-                                <a href="#!"><img src="{{url('public')}}/images/blog/ds-1.png" alt="img"></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="dubbel-img wow fadeIn" data-wow-duration="3s">
-                                <a href="#!"><img src="{{url('public')}}/images/blog/ds-2.png" alt="img"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sec-par-tree">
-                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro
-                            quisquam est, qui dolorem ipsum quia. sed quia ipsum den consequuntur magni dolores
-                            eos.</p>
-                        <p>Dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora
-                            incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                        <p>Corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel
-                            eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur,
-                            vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
-                    </div>
-                    <div class="box-tes-bl">
-                        <i class="fas fa-quote-right"></i>
-                        <blockquote>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                            doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis
-                        </blockquote>
+                        <h4>{{$blogs->name}}</h4>
+                        <p>{!! $blogs->content !!}</p>
                     </div>
                     <div class="inner-tahes">
                         <ul>
                             <li><a href="#!"><i class="fas fa-pen-nib"></i></a></li>
                             <li><a href="#!">Travel,</a></li>
                             <li><a href="#!">Tour,</a></li>
-                            <li><a href="#!"> Summer,</a></li>
+                            <li><a href="#!">Summer,</a></li>
                             <li><a href="#!">Hotels,</a></li>
                             <li><a href="#!">Flights</a></li>
 
@@ -98,112 +63,104 @@
                             <li><a href="#!"> Share this article</a></li>
                         </ul>
                     </div>
-                    <div class="sal-client-chart">
-                        <div class="client-chart-img">
-                            <img src="{{url('public')}}/images/rep-2.png" alt="img">
-                        </div>
-                        <div class="det-client-chart">
-                            <h5>John Doe</h5>
-                            <p>Ut enim ad minima veniam, quis nostrum exerci tationem ullam corporis suscipit den
-                                ser mori ten laboriosam, nisi ut aliquid ex ea commodi consequatur.</p>
-                            <a href="#!"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#!"><i class="fab fa-twitter"></i></a>
-                            <a href="#!"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div class="all-clien-sayt">
-                        <h2>2 Comments</h2>
-                        <div class="coom-2-client">
-                            <div class="coomm-2client-img">
-                                <img src="{{url('public')}}/images/rep-1.png" alt="img">
-                            </div>
-                            <div class="coomm-2cliebt-hed">
-                                <div class="alow-rasta">
-                                    <div class="all-kal">
-                                        <h5>John Dus</h5>
-                                        <p class="dadate-titm">13 June, 2019 at 07:30</p>
-                                    </div>
-                                    <div class="darkan-mara">
-                                        <p><a href="#!">Reply</a></p>
-                                    </div>
-
-                                </div>
-                                <div class="all-text-emar">
-                                    <p>Ut enim ad minima veniam, quis nostrum exerci tationem ullam corporis
-                                        suscipit laboriosam, nisi ut aliquid ex ea.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="coom-2-client mar-nened">
-                            <div class="coomm-2client-img">
-                                <img src="{{url('public')}}/images/rep-2.png" alt="img">
-                            </div>
-                            <div class="coomm-2cliebt-hed">
-                                <div class="alow-rasta">
-                                    <div class="all-kal">
-                                        <h5>John Dus</h5>
-                                        <p class="dadate-titm">13 June, 2019 at 07:30</p>
-                                    </div>
-                                    <div class="darkan-mara">
-                                        <p><a href="#!">Reply</a></p>
-                                    </div>
-
-                                </div>
-                                <div class="all-text-emar">
-                                    <p>Ut enim ad minima veniam, quis nostrum exerci tationem ullam corporis
-                                        suscipit laboriosam, nisi ut aliquid ex ea.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="coom-2-client">
-                            <div class="coomm-2client-img">
-                                <img src="{{url('public')}}/images/rep-1.png" alt="img">
-                            </div>
-                            <div class="coomm-2cliebt-hed">
-                                <div class="alow-rasta">
-                                    <div class="all-kal">
-                                        <h5>John Dus</h5>
-                                        <p class="dadate-titm">13 June, 2019 at 07:30</p>
-                                    </div>
-                                    <div class="darkan-mara">
-                                        <p><a href="#!">Reply</a></p>
-                                    </div>
-
-                                </div>
-                                <div class="all-text-emar">
-                                    <p>Ut enim ad minima veniam, quis nostrum exerci tationem ullam corporis
-                                        suscipit laboriosam, nisi ut aliquid ex ea.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- comment    -->
                     <div class="lave-cooment">
-                        <h4>Leave a Comment</h4>
+                        <h4>Viết bình luận</h4>
+                        @if(Auth::guard('cus')->check())
                         <div class="leav-form">
-                            <form action="#">
-                                <div class="lave-tree-form">
-                                    <div class="form-group flex-fill">
-                                        <label for="exampleInputName">Full Name <span>*</span></label>
-                                        <input type="text" class="form-control" id="exampleInputName" required="">
-                                    </div>
-                                    <div class="form-group flex-fill email-fred">
-                                        <label for="exampleInputEmail">Email <span>*</span></label>
-                                        <input type="email" class="form-control" id="exampleInputEmail" required="">
-                                    </div>
-                                    <div class="form-group flex-fill">
-                                        <label for="exampleInputWeb">Website <span>*</span></label>
-                                        <input type="url" class="form-control" id="exampleInputWeb" required="">
-                                    </div>
+                            <form action="{{route('comment',$blogs->slug)}}" method="POST" role="form">
+                                @csrf
+                                <div class="text-are form-group">
+                                    <label for="exampleWrite">Nội Dung<span>*</span></label>
+                                    <textarea rows="6" class="form-control" name="content"></textarea>
+                                </div>
+                                <div class="form-for-btn">
+                                    <button type="submit" class="btn for-pag-btn">Bình luận</button>
                                 </div>
                             </form>
-                            <div class="text-are form-group">
-                                <label for="exampleWrite">Full Name <span>*</span></label>
-                                <textarea rows="6" class="form-control" id="exampleWrite" required=""></textarea>
+                        </div>
+                        @else
+                        <div class="comment-required">
+                            <h3>Bạn cần phải đăng nhập thì mới bình luận được bài viết</h3>
+                            <a href="{{route('account')}}" class="btn btn-2">Đăng nhập</a>
+                        </div>
+                        @endif
+                    </div>
+                    <div class="all-clien-sayt">
+                        <!-- comment section -->
+                        <h2>{{$comment_count->count()}} Bình Luận</h2>
+                        @foreach($comments as $com)
+                        <div class="coom-2-client">
+                            <div class="coomm-2client-img">
+                                <img src="{{url('public')}}/images/rep-1.png" alt="img">
                             </div>
-                            <div class="form-for-btn">
-                                <a href="#!" class="btn for-pag-btn">Submit Comment</a>
+                            <div class="coomm-2cliebt-hed">
+                                <div class="alow-rasta">
+                                    <div class="all-kal">
+                                        <h5>{{$com->customers->f_name}}</h5>
+                                        <p class="dadate-titm">{{$com->created_at}}</p>
+                                    </div>
+                                </div>
+                                <div class="all-text-emar">
+                                    <p>{{$com->content}}</p>
+                                </div>
+                                <div class="darkan-mara">
+                                    <p class="comment-reply">Trả lời</p>
+                                </div>
+                                <div class="reply-form">
+                                    <form action="{{route('reply-comment',['slug'=>$blogs->slug,'id'=>$com->id])}}" method="POST" class="form-inline" role="form">
+                                        @csrf
+                                    <h6>Trả lời bình luận</h6>     
+                                        <div class="form-group">
+                                            <label for="">Nội dung</label>
+                                            <textarea rows="6" cols="84" class="form-control" name="content"></textarea>
+                                        </div>
+                                        <div class="form-for-btn">
+                                            <button type="submit" class="btn for-pag-btn">Trả lời</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
+                            @if($com->replies)
+                            @foreach($com->replies as $comrep)
+
+                                <div class="coom-2-client mar-nened">
+                                    <div class="coomm-2client-img">
+                                        <img src="{{url('public')}}/images/rep-2.png" alt="img">
+                                    </div>
+                                    <div class="coomm-2cliebt-hed">
+                                        <div class="alow-rasta">
+                                            <div class="all-kal">
+                                                <h5>{{$comrep->customers->f_name}}</h5>
+                                                <p class="dadate-titm">{{$comrep->created_at}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="all-text-emar">
+                                            <p>{{$comrep->content}}</p>
+                                        </div>
+                                        <div class="darkan-mara">
+                                            <p class="reply-comment">Trả lời</p>
+                                        </div>
+                                        <div class="reply-form-reply">
+                                            <form action="{{route('reply-comment',['slug'=>$blogs->slug,'id'=>$comrep->id])}}" method="POST" class="form-inline" role="form">
+                                                @csrf
+                                            <h6>Trả lời bình luận</h6>     
+                                                <div class="form-group">
+                                                    <label for="">Nội dung</label>
+                                                    <textarea rows="6" cols="84" class="form-control" name="content"></textarea>
+                                                </div>
+                                                <div class="form-for-btn">
+                                                    <button type="submit" class="btn for-pag-btn">Trả lời</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                            @endif
+                        @endforeach 
+                        
                     </div>
                 </div>
             </div>
@@ -268,33 +225,20 @@
                             <h5>Recent Posts</h5>
                         </div>
                         <div class="blog-cljg">
+                            @foreach($blog as $bl)
                             <div class="blog-cliccs">
                                 <div class="blog-clss-img  wow zoomIn" data-wow-duration="1s">
-                                    <a href="#!"><img src="{{url('public')}}/images/blog/res-1.png" alt=""></a>
+                                    <a href="{{route('blog-detail',['slug'=>$bl->slug])}}">
+                                        <img src="{{url('public/images/uploads')}}/{{$bl->image}}" alt="">
+                                    </a>
                                 </div>
                                 <div class="alo-blog-clss-text">
-                                    <h6><a href="#!">What happen during my first trip</a></h6>
-                                    <p class="datre">July 04, 2019</p>
+                                    <h6><a href="{{route('blog-detail',['slug'=>$bl->slug])}}">{{$bl->name}}</a></h6>
+                                    <p class="datre">{{$bl->created_at}}</p>
                                 </div>
                             </div>
-                            <div class="blog-cliccs">
-                                <div class="blog-clss-img  wow zoomIn" data-wow-duration="1s">
-                                    <a href="#!"><img src="{{url('public')}}/images/blog/res-2.png" alt=""></a>
-                                </div>
-                                <div class="alo-blog-clss-text">
-                                    <h6><a href="#!">What happen during my first trip</a></h6>
-                                    <p class="datre">July 04, 2019</p>
-                                </div>
-                            </div>
-                            <div class="blog-cliccs">
-                                <div class="blog-clss-img  wow zoomIn" data-wow-duration="1s">
-                                    <a href="#!"><img src="{{url('public')}}/images/blog/res-3.png" alt=""></a>
-                                </div>
-                                <div class="alo-blog-clss-text">
-                                    <h6><a href="#!">What happen during my first trip</a></h6>
-                                    <p class="datre">July 04, 2019</p>
-                                </div>
-                            </div>
+                            @endforeach
+                            
                         </div>
                     </div>
                     <div class="coomm-seclitor">
@@ -354,5 +298,20 @@
     </div>
 </section>
 <!--  blog-single-content end-->
+@endsection
+
+@section('js')
+<script type="text/javascript">
+    $('.reply-form').hide();
+    $('.comment-reply').click(function(){
+        $('.reply-form').toggle();
+        $('.reply-form-reply').hide();
+    });
+    $('.reply-form-reply').hide();
+    $('.reply-comment').click(function(){
+        $('.reply-form-reply').toggle();
+        $('.reply-form').hide();
+    });
+</script>
 
 @stop

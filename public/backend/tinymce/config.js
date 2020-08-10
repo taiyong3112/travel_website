@@ -34,7 +34,7 @@ tinymce.init({
     external_plugins: { 
         "filemanager" : base_url()+"/file/plugin.min.js"
     },
-    filemanager_access_key:akey();
+    filemanager_access_key:akey(),
 });
 
 tinymce.init({

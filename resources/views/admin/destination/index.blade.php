@@ -12,7 +12,7 @@ Destination | Wend Travel
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title" style="margin-bottom: 20px">Destination
-					<a href="{{route('destination.create')}}" class="btn btn-primary float-right" style="margin:0 0 15px 0">ADD</a>
+					<a href="{{route('admin.destination.create')}}" class="btn btn-primary float-right" style="margin:0 0 15px 0">ADD</a>
                 </h4>
                 @if (session('status-success'))
                     <div class="alert alert-success" role="alert">
@@ -58,10 +58,10 @@ Destination | Wend Travel
                                 <td>{{$dest->meta_keywords}}</td>
                                 <td>{{$dest->meta_descriptions}}</td>
                                 <td>
-                                    <a href="{{route('destination.edit',$dest->id)}}" class="btn btn-success btn-sm">EDIT</a>
+                                    <a href="{{route('admin.destination.edit',$dest->id)}}" class="btn btn-success btn-sm">EDIT</a>
                                 </td>
                                 <td>
-                                    <form action="{{route('destination.destroy',$dest->id)}}" method="POST">
+                                    <form action="{{route('admin.destination.destroy',$dest->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">DELETE</button>

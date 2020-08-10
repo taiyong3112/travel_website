@@ -9,11 +9,12 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="{{url('public')}}/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{{url('public')}}/css/zebra_datepicker_bs.min.css">
-		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 		<link rel="stylesheet" href="{{url('public')}}/css/owl.carousel.min.css">
 		<link rel="stylesheet" href="{{url('public')}}/css/owl.theme.default.min.css">
 		<link rel="stylesheet" href="{{url('public')}}/css/style.css">
+		<link rel="stylesheet" href="{{url('public/css')}}/lightbox.css">
 		@yield('css')
 	</head>
 	<body>
@@ -28,16 +29,24 @@
 							<p><i class="fas fa-map-marker-alt"></i> 78 5th Ave, New York, Ny 10011, USA</p>
 						</div>
 						<div class="col-md-3 col-sm-3">
-							<div class="col-md-6 col-xs-6 lang">
-								<p>
-									<img src="{{url('public')}}/images/icons/us-icon.png" alt=""> USA <i class="fas fa-chevron-down"></i>
-								</p>
-							</div>
-							<div class="col-md-6 col-xs-6 sign-in">
+							<div class="sign-in">
 								@if(Auth::guard('cus')->check())
-								<a href="{{route('home.logout')}}">
-									<p>Sign Out</p>
-								</a>
+								<!-- <div class="dropdown">
+									<a href="" class="dropdown-toggle" data-toggle="dropdown">
+										<p>{{Auth::guard('cus')->user()->name}}</p>
+									</a>
+									<a href="{{route('home.logout')}}" class="dropdown-menu">
+										<p>Sign Out</p>
+									</a>
+								</div> -->
+								<div class="col-md-8">
+									<p>Hello: {{Auth::guard('cus')->user()->f_name}}</p>
+								</div>
+								<div class="col-md-4">
+									<a href="{{route('home.logout')}}">
+										<p>Sign Out</p>
+									</a>
+								</div>
 								@else
 								<a href="{{route('account')}}">
 									<p><i class="fas fa-user"></i> Sign in</p>
@@ -96,7 +105,9 @@
 				</div>
 			</div>
 		</header>
+
 		@yield('main')
+
 		<footer id="footer-all-page">
 			<div class="container">
 			  <div class="row">
@@ -159,42 +170,21 @@
 			          <h6>Recent Post</h6>
 			        </div>
 			        <div class="post-cover-foot">
+			        	@foreach($blog as $bl)
 			          <div class="pos-rece-1">
 			            <div class="post-rect-img">
-			              <a href="blog-single.html"><img src="{{url('public')}}/images/footer-blog.png"alt="" /></a>
+							<a href="{{route('blog-detail',['slug'=>$bl->slug])}}">
+							    <img src="{{url('public/images/uploads')}}/{{$bl->image}}" alt="">
+							</a>
 			            </div>
 			            <div class="podt-text-1">
 			              <p>
-			                <a href="blog-single.html">Pellentesque convallis, diam et feugiat volutpat,
-			                  tellus ligula c</a>
+			                <a href="{{route('blog-detail',['slug'=>$bl->slug])}}">{{$bl->name}}</a>
 			              </p>
-			              <span>Sep 09, 2019</span>
+			              <span>{{$bl->created_at}}</span>
 			            </div>
 			          </div>
-			          <div class="pos-rece-1">
-			            <div class="post-rect-img">
-			              <a href="blog-single.html"><img src="{{url('public')}}/images/footer-blog.png" alt="" /></a>
-			            </div>
-			            <div class="podt-text-1">
-			              <p>
-			                <a href="blog-single.html">Pellentesque convallis, diam et feugiat volutpat,
-			                  tellus ligula c</a>
-			              </p>
-			              <span>Sep 09, 2019</span>
-			            </div>
-			          </div>
-			          <div class="pos-rece-1">
-			            <div class="post-rect-img">
-			              <a href="blog-single.html"><img src="{{url('public')}}/images/footer-blog.png" alt="" /></a>
-			            </div>
-			            <div class="podt-text-1">
-			              <p>
-			                <a href="blog-single.html">Pellentesque convallis, diam et feugiat volutpat,
-			                  tellus ligula c</a>
-			              </p>
-			              <span>Sep 09, 2019</span>
-			            </div>
-			          </div>
+			          @endforeach   
 			        </div>
 			      </div>
 			    </div>
@@ -222,7 +212,8 @@
 			</div>
 		</div>
 		<!-- jQuery -->
-		<script src="https://code.jquery.com/jquery.js"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
+ 		<script type="text/javascript" src="{{url('public/js')}}/lightbox.min.js"></script>
 		<!-- Zebra Datepicker -->
 		<script src="{{url('public')}}/js/zebra_datepicker.min.js"></script>
 		<!-- Bootstrap JavaScript -->
